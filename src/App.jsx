@@ -38,6 +38,7 @@ function App() {
 
   React.useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
+    return () => document.removeEventListener("keydown", handleKeyPress)
   }, [])
   
 
@@ -58,6 +59,14 @@ function App() {
         variant="primary"
       >
         reset
+      </Button>
+      <Button 
+        onClick={() => {
+          console.log(board)
+        }}
+        variant="primary"
+      >
+        up
       </Button>
       <table border="1">
         <tr>
