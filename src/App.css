@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
 .App {
   text-align: center;
 }
@@ -38,6 +41,7 @@
 }
 
 table { 
+
   text-align: center;
   margin: auto;
   min-width: 400px;
@@ -47,3 +51,24 @@ table td {
   height: 100px;
 }
 
+.block {
+  font-size: 60px;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Itim', cursive;
+}
+
+.button {
+  margin: auto;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
