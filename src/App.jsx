@@ -61,26 +61,6 @@ function App() {
   // handle key presses
   const handleKeyPress = (event) => {
     handleOperation(event.key)
-    // const newBoard = [...board]
-    // if (event.key === 'ArrowUp') {
-    //   handleUp(newBoard)
-    //   mergeUp(newBoard)
-    //   handleUp(newBoard)
-    // } else if (event.key === 'ArrowDown') {
-    //   handleDown(newBoard)
-    //   mergeDown(newBoard)
-    //   handleDown(newBoard)
-    // } else if (event.key === 'ArrowRight') {
-    //   handleRight(newBoard)
-    //   mergeRight(newBoard)
-    //   handleRight(newBoard)
-    // } else if (event.key === 'ArrowLeft') {
-    //   handleLeft(newBoard)
-    //   mergeLeft(newBoard)
-    //   handleLeft(newBoard)
-    // }
-    // addNum()
-    // setBoard(newBoard)
   }
 
 
