@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Footer from './Footer';
+import { useSwipeable } from 'react-swipeable';
 
 function App() {
   const defaultBoard = [[2, ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '],]
@@ -35,22 +36,21 @@ function App() {
     return true 
   }
 
-  // handle key presses
-  const handleKeyPress = (event) => {
+  const handleOperation = (op) => {
     const newBoard = [...board]
-    if (event.key === 'ArrowUp') {
+    if (op === 'ArrowUp') {
       handleUp(newBoard)
       mergeUp(newBoard)
       handleUp(newBoard)
-    } else if (event.key === 'ArrowDown') {
+    } else if (op === 'ArrowDown') {
       handleDown(newBoard)
       mergeDown(newBoard)
       handleDown(newBoard)
-    } else if (event.key === 'ArrowRight') {
+    } else if (op === 'ArrowRight') {
       handleRight(newBoard)
       mergeRight(newBoard)
       handleRight(newBoard)
-    } else if (event.key === 'ArrowLeft') {
+    } else if (op === 'ArrowLeft') {
       handleLeft(newBoard)
       mergeLeft(newBoard)
       handleLeft(newBoard)
@@ -58,6 +58,31 @@ function App() {
     addNum()
     setBoard(newBoard)
   }
+  // handle key presses
+  const handleKeyPress = (event) => {
+    handleOperation(event.key)
+    // const newBoard = [...board]
+    // if (event.key === 'ArrowUp') {
+    //   handleUp(newBoard)
+    //   mergeUp(newBoard)
+    //   handleUp(newBoard)
+    // } else if (event.key === 'ArrowDown') {
+    //   handleDown(newBoard)
+    //   mergeDown(newBoard)
+    //   handleDown(newBoard)
+    // } else if (event.key === 'ArrowRight') {
+    //   handleRight(newBoard)
+    //   mergeRight(newBoard)
+    //   handleRight(newBoard)
+    // } else if (event.key === 'ArrowLeft') {
+    //   handleLeft(newBoard)
+    //   mergeLeft(newBoard)
+    //   handleLeft(newBoard)
+    // }
+    // addNum()
+    // setBoard(newBoard)
+  }
+
 
   const handleUp = (newBoard) => {
     // move all the numbers up 
@@ -194,12 +219,21 @@ function App() {
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress)
   })
-  
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleOperation('ArrowLeft'),
+    onSwipedRight: () => handleOperation('ArrowRight'),
+    onSwipedUp:() => handleOperation('ArrowUp'),
+    onSwipedDown:() => handleOperation('ArrowDown'),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
   return (
     <div className='container'>  
       <div className='title'>welcome to my 2048</div>
       <Footer/>
-      <table border="0">
+      <table border="0" {...handlers}>
         <tr>
           <td>
             <div className='block' style={{backgroundColor: getColor(board[0][0])}}> {board[0][0]}</div>
