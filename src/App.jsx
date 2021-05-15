@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Footer from './Footer';
 
 function App() {
   const defaultBoard = [[2, ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '], [' ', ' ', ' ', ' '],]
@@ -196,6 +197,8 @@ function App() {
   
   return (
     <div className='container'>  
+      <div className='title'>welcome to my 2048</div>
+      <Footer/>
       <table border="0">
         <tr>
           <td>
